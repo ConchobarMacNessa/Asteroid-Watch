@@ -1,0 +1,14 @@
+/* Sky black #313131 */
+/*mars Red #E0473D */
+/*light #E4E7F2 */
+/*close #EAB22B*/
+
+body {
+  background: #313131;
+}
+
+h1 {
+  text-align: center;
+  color: #E0473D;
+  font-family: 'Rubik Mono One';
+}
