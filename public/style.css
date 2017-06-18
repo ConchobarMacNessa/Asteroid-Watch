@@ -29,10 +29,14 @@ rect {
   display: block;
 }
 
-.axis {
+.axis, text {
   stroke: #E4E7F2;
 }
 
 .domain, line {
   stroke: #313131;
+}
+
+.gAsteroid:hover {
+  fill: 'yellow';
 }

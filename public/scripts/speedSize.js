@@ -2,15 +2,13 @@
 function speedSize(){
 d3.json(jsonUrl, function (err, data) {
   var startPoint = 500;
-
-  svg.selectAll('.asteriod')
-      .style('fill', 'yellow');
+  var t = d3.transition().duration(1000);
 
   var yScale = d3.scaleLinear()
     .domain(d3.extent(data, d => d.close_approach_data.relative_velocity.kilometers_per_second))
     .range([startPoint, 0])
     .nice();
-  var yAxis = d3.axisLeft(yScale);
+  var yAxis = d3.axisLeft(yScale)
   svg.call(yAxis);
 
 
@@ -24,6 +22,7 @@ d3.json(jsonUrl, function (err, data) {
   svg
     .append('g')
       .attr('transform', `translate(0, ${height})`)
+      .classed('axis', true)
     .call(xAxis);
 
   var rScale = d3.scaleSqrt()
@@ -41,8 +40,6 @@ d3.json(jsonUrl, function (err, data) {
     tempObj.size = d.estimated_diameter.kilometers.estimated_diameter_max
     asteroidObj.push(tempObj)
   })
-  var t = d3.transition().duration(1000);
-
 
   for (var i = 0; i < gElementsGroups.length; i++) {
     for (var i = 0; i < asteroidObj.length; i++){

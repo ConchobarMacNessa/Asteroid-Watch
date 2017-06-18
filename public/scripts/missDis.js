@@ -1,10 +1,33 @@
 function missDistanceGraph() {
   d3.json(jsonUrl, function (err, data) {
-  var startPoint = 500;
 
-  function fade (selection, opacity) {
-    selection.style('fill-opacity', opacity);
+    var existingG = svg.selectAll('.gAsteroid')._groups[0];
+    var existingCircles = svg.selectAll('.asteroid')._groups[0];
+    var existingText = svg.selectAll('.textNode')._groups[0];
+
+    var xCoordinates = [
+      15,
+      94,
+      172,
+      250,
+      329,
+      407,
+      486,
+      564,
+      643,
+      721
+    ];
+
+    for (var i = 0; i < 10; i++) {
+    existingG[i].style.transition = "transform 1.5s";
+    existingG[i].setAttribute('transform',`translate(${xCoordinates[i]}, 500)`);
+    existingCircles[i].style.transition = "r 1.5s";
+    existingCircles[i].setAttribute('r',0);
+    existingText[i].style.transition = "opacity 1s";
+    existingText[i].setAttribute('opacity',0);
   }
+
+  var startPoint = 500;
 
   var xScale = d3.scaleBand()
     .domain(data.map(d => d.name))
@@ -29,7 +52,8 @@ function missDistanceGraph() {
     .classed('axis', true)
     .call(d3.axisLeft(yScale));
 
-      var t = d3.transition().duration(1000);
+      var t = d3.transition()
+        .duration(1000);
 
       var update = svg.selectAll('rect')
         .data(data.filter(d => d.close_approach_data.miss_distance.kilometers), d => d.name)
@@ -37,6 +61,7 @@ function missDistanceGraph() {
       update
         .exit()
         .transition(t)
+        .delay(800)
         .attr('y', height)
         .attr('height', 0)
         .remove(); //removes any object without a corresponding data object
@@ -44,12 +69,12 @@ function missDistanceGraph() {
       yScale.domain([0, d3.max(data, d => d.close_approach_data.miss_distance.kilometers)]);
       yAxis
         .transition(t)
-        .delay(1000)
+        .delay(800)
         .call(d3.axisLeft(yScale));
 
       update
         .transition(t)
-        .delay(1000)
+        .delay(800)
         .attr('y', d => yScale(d.close_approach_data.miss_distance.kilometers))
         .attr('height', d => startPoint - yScale(d.close_approach_data.miss_distance.kilometers));
 
@@ -70,7 +95,8 @@ function missDistanceGraph() {
         .attr('x', d => xScale(d.name))
         .attr('width', 50)
         .transition(t)
-        .delay(update.exit().size() ? 1000 : 0)
+        .delay(800)
+        // .delay(update.exit().size() ? 1000 : 0)
         .attr('y', d => yScale(d.close_approach_data.miss_distance.kilometers))
         .attr('height', d => startPoint - yScale(d.close_approach_data.miss_distance.kilometers));
   });
