@@ -16,7 +16,6 @@ function size(){
 //         .alphaTarget(2)
 //         .force('box', null)
 //
-// setTimeout(function(){
   tick = false;
 
   var rScale = d3.scaleSqrt()
@@ -33,15 +32,11 @@ function size(){
     return b - a
   })
 
-  var gCircles = svg
-    .selectAll('.gAsteroid')
-    .selectAll(`.\\385580`);
-
 var circles = svg
   .selectAll('.gAsteroid')
   .selectAll('circle')
 
-  var xPosition = 0;
+  var xPosition = 100;
 
     for (var i = 0; i < 10; i++){
       if (i > 0) {
@@ -54,8 +49,9 @@ var circles = svg
         addCs(circles._groups)
       }, 1000)
     }
+});
+}
 
-// }
 
 function addCs(groups){
   for (var i = 0; i < 10; i++){
@@ -63,7 +59,4 @@ function addCs(groups){
     .style.transition = "cy 2.5s";
   groups[i][0].setAttribute('cy', 250);
   }
-}
-
-});
 }

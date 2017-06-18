@@ -27,8 +27,13 @@ var circles = svg
   .data(data)
   .enter()
   .append('g')
-  .attr('class', 'gAsteroid')
   .attr('id', (d) => d.simplified_name)
+  .attr('class', (d) =>{
+    if (d.is_potentially_hazardous_asteroid){
+      return 'gAsteroid hazardous';
+    }
+    return 'gAsteroid';
+  })
   // .attr('transform', d => {
   //   return `translate(${getRandomInt(0, 800)}, ${getRandomInt(100, 400)})`
   // });
