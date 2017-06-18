@@ -1,6 +1,9 @@
 
 function speedSize(){
 d3.json(jsonUrl, function (err, data) {
+
+  tick = false;
+
   var startPoint = 500;
   var t = d3.transition().duration(1000);
 
@@ -29,6 +32,11 @@ d3.json(jsonUrl, function (err, data) {
     .domain([0, d3.max(data, d => d.estimated_diameter.kilometers.estimated_diameter_max)])
     .range([0, 40]);
 
+  var simulation = d3.forceSimulation()
+      .force('collide', d3.forceCollide(0))
+
+  simulation.nodes(data)
+      .on('tick', null)
 
   var gElements = svg.selectAll('.gAsteroid');
   var gElementsGroups = gElements._groups[0]
@@ -47,5 +55,6 @@ d3.json(jsonUrl, function (err, data) {
         gElementsGroups[i].setAttribute('transform',`translate(${xScale(asteroidObj[i].size)}, ${yScale(asteroidObj[i].speed)})`);
       }
   }
+
 });
 }

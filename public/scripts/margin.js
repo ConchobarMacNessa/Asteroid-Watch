@@ -10,4 +10,4 @@ var svg = d3.select(".chart")
   .append("g")
   .attr("transform", "translate(100, " + margin.top + ")");
 
-var jsonUrl = 'https://gist.githubusercontent.com/ConchobarMacNessa/1cbf3116ef71b70ba150706c78ae7cf4/raw/b17e150e0b9b532e3519e5d4c81351ba4d35692e/asteroids.json';
+var jsonUrl = 'https://gist.githubusercontent.com/ConchobarMacNessa/1cbf3116ef71b70ba150706c78ae7cf4/raw/857d95839eb127b43621ae7c4a84c0e960e06769/asteroids.json';
