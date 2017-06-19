@@ -52,8 +52,8 @@ function missDistanceGraph() {
     .classed('axis', true)
     .call(d3.axisLeft(yScale));
 
-      var t = d3.transition()
-        .duration(1000);
+      // var t = d3.transition()
+        // .duration(1000);
 
       var update = svg.selectAll('rect')
         .data(data.filter(d => d.close_approach_data.miss_distance.kilometers), d => d.name)

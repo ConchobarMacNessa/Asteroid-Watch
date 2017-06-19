@@ -6,7 +6,7 @@ var svg = d3.select(".chart")
   .append("svg")
   .attr("width", width + margin.left + margin.right)
   .classed("info", true)
-  .attr("height", height + margin.top + margin.bottom)
+  .attr("height", height + 200 + margin.top + margin.bottom)
   .append("g")
   .attr("transform", "translate(100, " + margin.top + ")");
 

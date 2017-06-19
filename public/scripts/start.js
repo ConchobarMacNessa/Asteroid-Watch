@@ -4,9 +4,7 @@ d3.json(jsonUrl, function (err, data) {
   tick = true;
 
   data = data.sort(function(a,b) {
-
     return b.estimated_diameter.kilometers.estimated_diameter_max - a.estimated_diameter.kilometers.estimated_diameter_max;
-
   })
 
 var rScale = d3.scaleSqrt()
@@ -14,8 +12,6 @@ var rScale = d3.scaleSqrt()
   .range([0, 40]);
 
 var simulation = d3.forceSimulation()
-  // .force('x', d3.forceX(width/2).strength(0.05))
-  // .force('y', d3.forceY(height/2).strength(0.05))
   .force('collide', d3.forceCollide(d => rScale(d.estimated_diameter.kilometers.estimated_diameter_max) + 1))
 
 var boxForce = boundedBox()
@@ -34,10 +30,6 @@ var circles = svg
     }
     return 'gAsteroid';
   })
-  // .attr('transform', d => {
-  //   return `translate(${getRandomInt(0, 800)}, ${getRandomInt(100, 400)})`
-  // });
-  // .attr('transform', 'translate(100, 100)');
 
   circles
     .append("circle")
@@ -68,51 +60,7 @@ var circles = svg
     .on('tick', ticked)
     .velocityDecay(0.05)
     .alphaTarget(1)
-    .force('box', boxForce)
-
-var Earth = d3.select('#Earth')
-
-d3.select('#orbit')
-      .on('click', function(){
-        orbit();
-        simulation
-          .force('x', d3.forceX(width/3).strength(0.05))
-          .force('y', d3.forceY(height/2).strength(0.05))
-          .force('box', null)
-          .force('collide', d3.forceCollide(d => rScale(d.estimated_diameter.kilometers.estimated_diameter_max) + 3))
-          .alphaTarget(0.5)
-          .restart()
-
-        setTimeout(function(){
-          planetGravity()
-        }, 1000)
-      })
-
-      // function planetCollide(){
-      //   var planets = d3.selectAll('.planet')
-      //     .selectAll('circle');
-      //     simulation.nodes(planets)
-      //       .force('collide', d3.forceCollide(d => rScale(d.r) + 3))
-      //   // planets = planets._groups;
-      //   // planets.forEach(function(p){
-      //   //   console.log(p[0].getAttribute('cy'));
-      //   // })
-      // }
-
-      function findGravity(planetName, attribute){
-        return planetObj.find(x => x.name === planetName)[attribute];
-      }
-
-      function planetGravity(){
-        simulation
-          .nodes(data)
-          .force('x', d3.forceX(d => findGravity(d.close_approach_data.orbiting_body, 'cx')).strength(0.05))
-          .force('y', d3.forceY(d => findGravity(d.close_approach_data.orbiting_body, 'cy')).strength(0.05))
-          .force('box', null)
-          .force('collide', d3.forceCollide(d => rScale(d.estimated_diameter.kilometers.estimated_diameter_max) + 3))
-          .alphaTarget(0.5)
-          .restart()
-      }
+    .force('box', boxForce);
 
     function boundedBox() {
       var nodes, sizes
@@ -169,7 +117,4 @@ d3.select('#orbit')
   }
 
 });
-}
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
