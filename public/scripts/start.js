@@ -70,6 +70,50 @@ var circles = svg
     .alphaTarget(1)
     .force('box', boxForce)
 
+var Earth = d3.select('#Earth')
+
+d3.select('#orbit')
+      .on('click', function(){
+        orbit();
+        simulation
+          .force('x', d3.forceX(width/3).strength(0.05))
+          .force('y', d3.forceY(height/2).strength(0.05))
+          .force('box', null)
+          .force('collide', d3.forceCollide(d => rScale(d.estimated_diameter.kilometers.estimated_diameter_max) + 3))
+          .alphaTarget(0.5)
+          .restart()
+
+        setTimeout(function(){
+          planetGravity()
+        }, 1000)
+      })
+
+      // function planetCollide(){
+      //   var planets = d3.selectAll('.planet')
+      //     .selectAll('circle');
+      //     simulation.nodes(planets)
+      //       .force('collide', d3.forceCollide(d => rScale(d.r) + 3))
+      //   // planets = planets._groups;
+      //   // planets.forEach(function(p){
+      //   //   console.log(p[0].getAttribute('cy'));
+      //   // })
+      // }
+
+      function findGravity(planetName, attribute){
+        return planetObj.find(x => x.name === planetName)[attribute];
+      }
+
+      function planetGravity(){
+        simulation
+          .nodes(data)
+          .force('x', d3.forceX(d => findGravity(d.close_approach_data.orbiting_body, 'cx')).strength(0.05))
+          .force('y', d3.forceY(d => findGravity(d.close_approach_data.orbiting_body, 'cy')).strength(0.05))
+          .force('box', null)
+          .force('collide', d3.forceCollide(d => rScale(d.estimated_diameter.kilometers.estimated_diameter_max) + 3))
+          .alphaTarget(0.5)
+          .restart()
+      }
+
     function boundedBox() {
       var nodes, sizes
       var bounds
