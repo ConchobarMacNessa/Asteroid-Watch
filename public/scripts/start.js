@@ -3,6 +3,10 @@ d3.json(jsonUrl, function (err, data) {
 
   tick = true;
 
+  var help = document.getElementsByClassName('start')
+    // .attr('display', 'none');
+  console.log(help);
+
   data = data.sort(function(a,b) {
     return b.estimated_diameter.kilometers.estimated_diameter_max - a.estimated_diameter.kilometers.estimated_diameter_max;
   })

@@ -38,6 +38,17 @@ rect {
   stroke: #313131;
 }
 
-.gAsteroid:hover {
-  fill: 'yellow';
+.button {
+  border: none;
+  background: none;
+  color: #E0473D;
+  font-family: 'Rubik Mono One';
+  /*display: none;*/
+  outline: none;
+  text-align: center;
+  margin: auto;
+}
+
+.start {
+  display: block;
 }

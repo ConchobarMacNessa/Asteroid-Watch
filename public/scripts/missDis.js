@@ -3,7 +3,7 @@ function missDistanceGraph() {
 
     var existingG = svg.selectAll('.gAsteroid')._groups[0];
     var existingCircles = svg.selectAll('.asteroid')._groups[0];
-    var existingText = svg.selectAll('.textNode')._groups[0];
+    // var existingText = svg.selectAll('.textNode')._groups[0];
 
     var xCoordinates = [
       15,
@@ -23,8 +23,8 @@ function missDistanceGraph() {
     existingG[i].setAttribute('transform',`translate(${xCoordinates[i]}, 500)`);
     existingCircles[i].style.transition = "r 1.5s";
     existingCircles[i].setAttribute('r',0);
-    existingText[i].style.transition = "opacity 1s";
-    existingText[i].setAttribute('opacity',0);
+    // existingText[i].style.transition = "opacity 1s";
+    // existingText[i].setAttribute('opacity',0);
   }
 
   var startPoint = 500;
@@ -52,9 +52,6 @@ function missDistanceGraph() {
     .classed('axis', true)
     .call(d3.axisLeft(yScale));
 
-      // var t = d3.transition()
-        // .duration(1000);
-
       var update = svg.selectAll('rect')
         .data(data.filter(d => d.close_approach_data.miss_distance.kilometers), d => d.name)
 
@@ -81,14 +78,15 @@ function missDistanceGraph() {
     update
         .enter()
         .append('rect')
+        .attr('fill-opacity', 0.5)
         .on('mouseover', function(d, i, elements) {
           d3.selectAll(elements)
-            .filter(':not(:hover)')
-            .call(fade, 0.5);
+            .filter(':hover')
+            .call(fade, 1);
         })
         .on('mouseout', function (d, i, elements) {
           d3.selectAll(elements)
-            .call(fade, 1);
+            .call(fade, 0.5);
         })
         .attr('y', startPoint)
         .attr('height', 0)
@@ -96,7 +94,6 @@ function missDistanceGraph() {
         .attr('width', 50)
         .transition(t)
         .delay(800)
-        // .delay(update.exit().size() ? 1000 : 0)
         .attr('y', d => yScale(d.close_approach_data.miss_distance.kilometers))
         .attr('height', d => startPoint - yScale(d.close_approach_data.miss_distance.kilometers));
   });
