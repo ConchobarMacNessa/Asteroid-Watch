@@ -1,4 +1,9 @@
 function size(data){
+
+var previousTextBox = svg
+  .selectAll('.popupBoxHolder')
+  .remove();
+
   tick = false;
 
   var rScale = d3.scaleSqrt()
