@@ -1,17 +1,9 @@
-function appendFirstPageText(data){
-
-  var popupText = ['These 10 circles',
-'represent 10 asteroids.',
-'Click an asteroid at',
-'any time to find out',
-'more about it.',
-'',
-'click below to continue'];
+function appendPopUpText(data, popuptext, position, boxHeight, func){
 
   var holder = svg
     .append('g')
       .attr('class', 'popupBoxHolder')
-      .attr('transform', 'translate(0, 100)');
+      .attr('transform', position);
 
   holder
     .append('rect')
@@ -23,13 +15,13 @@ function appendFirstPageText(data){
         .duration(2000))
       .attr('fill-opacity', 1)
       .attr('width', 180)
-      .attr('height', 180);
+      .attr('height', boxHeight);
 
   var textholder = holder
     .append('text')
 
 var y = 20;
-popupText.forEach(function(text){
+popuptext.forEach(function(text){
   textholder
     .append('tspan')
       .attr('x', 10)
@@ -42,7 +34,8 @@ popupText.forEach(function(text){
 var buttonHolder =
   holder
   .append('g')
-  .attr('transform', 'translate(70, 145)')
+  .attr('class', 'nextButton')
+  .attr('transform', `translate(70, ${boxHeight - 35})`)
 
   buttonHolder
   .append('path')
@@ -50,7 +43,7 @@ var buttonHolder =
     .attr('fill', '#E0473D')
     .attr('class', 'startButtonRect')
     .on('click', function(){
-      size(data);
+      func(data);
     })
     .attr('display', 'block')
     .attr('fill-opacity', 0)
@@ -58,4 +51,28 @@ var buttonHolder =
       .duration(2000))
     .attr('fill-opacity', 1)
 
+ }
+
+ function changePopUp(data, text) {
+   console.log(data);
+   var currentPopUp = svg
+   .selectAll('.popupBoxHolder')
+     .transition(t)
+     .attr('transform', 'translate(650, 0)');
+
+    setTimeout(function(){
+      appendPopUpText(data, text, 'translate(650, 0)', 165, function(){
+        return dangerous(data);
+      })
+    }, 1500)
+    setTimeout(function(){
+
+      removePopUp();
+    }, 1000)
+ }
+
+ function removePopUp(){
+   var previousTextBox = svg
+     .selectAll('.popupBoxHolder')
+     .remove();
  }

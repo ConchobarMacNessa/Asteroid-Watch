@@ -1,8 +1,16 @@
 function start(){
 d3.json(jsonUrl, function (err, data) {
 
+  var popupText = ['These 10 circles',
+    'represent 10 asteroids.',
+    'Click an asteroid at',
+    'any time to find out',
+    'more about it.',
+    '',
+    'click below to continue'];
+
   setTimeout(function(){
-    appendFirstPageText(data)
+    appendPopUpText(data, popupText, 'translate(0, 100)', 180, size)
   }, 1000);
 
 

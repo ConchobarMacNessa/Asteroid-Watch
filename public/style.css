@@ -90,8 +90,15 @@ rect {
 .modal__close {
   color: #E0473D;
   font-family: sans-serif;
+  cursor: pointer;
+  cursor: hand;
 }
 
 .startButtonRect {
   fill: #E0473D;
+}
+
+.nextButton:hover {
+  cursor: pointer;
+  cursor: hand;
 }
