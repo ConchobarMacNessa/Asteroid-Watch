@@ -1,5 +1,5 @@
 function dangerous(){
-  d3.json(jsonUrl, function (err, data) {
+  d3.json(jsonUrl, function(err, data) {
 
   var nonDangerousAs = svg
     .selectAll('.gAsteroid')

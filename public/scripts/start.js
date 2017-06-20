@@ -3,13 +3,9 @@ d3.json(jsonUrl, function (err, data) {
 
   tick = true;
 
-  var help = document.getElementsByClassName('start')
-    // .attr('display', 'none');
-  console.log(help);
-
-  data = data.sort(function(a,b) {
-    return b.estimated_diameter.kilometers.estimated_diameter_max - a.estimated_diameter.kilometers.estimated_diameter_max;
-  })
+  // data = data.sort(function(a,b) {
+  //   return b.estimated_diameter.kilometers.estimated_diameter_max - a.estimated_diameter.kilometers.estimated_diameter_max;
+  // })
 
 var rScale = d3.scaleSqrt()
   .domain([0, d3.max(data, d => d.estimated_diameter.kilometers.estimated_diameter_max)])
@@ -27,13 +23,19 @@ var circles = svg
   .data(data)
   .enter()
   .append('g')
-  .attr('id', (d) => d.simplified_name)
-  .attr('class', (d) =>{
-    if (d.is_potentially_hazardous_asteroid){
-      return 'gAsteroid hazardous';
-    }
-    return 'gAsteroid';
-  })
+    .attr('id', (d) => {
+      modal(d);
+      return d.simplified_name;
+    })
+    .attr('class', (d) =>{
+      if (d.is_potentially_hazardous_asteroid){
+        return 'gAsteroid hazardous';
+      }
+      return 'gAsteroid';
+    })
+    .on('click', function(d){
+      openModal(d)
+    })
 
   circles
     .append("circle")

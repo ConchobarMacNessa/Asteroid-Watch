@@ -1,4 +1,3 @@
-
 function speedSize(){
 d3.json(jsonUrl, function (err, data) {
 
@@ -42,7 +41,6 @@ setTimeout(function appendAxis(){
       .attr("transform", `translate(${width/2}, ${height + margin.top + 40})`)
       .style("text-anchor", "middle")
       .text("Size in KM");
-
 
   }, 2000);
 
