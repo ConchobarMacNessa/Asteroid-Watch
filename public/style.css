@@ -14,13 +14,25 @@ h1 {
 }
 
 rect {
-  fill: #E0473D;
+  fill: #E4E7F2;
   rx: 5;
   ry: 5;
 }
 
+.popupBox__text {
+  fill: #313131;
+  font-family: 'Open Sans';
+  font-size: 0.9em;
+}
+
 .chart {
   background: #313131;
+  display: flex;
+  /*background: pink;*/
+  width: 65%;
+  margin:auto;
+  left: 10em;
+  position: fixed;
 }
 
 .info {
@@ -30,7 +42,7 @@ rect {
 }
 
 .axis, text {
-  stroke: #E4E7F2;
+  fill: #E4E7F2;
 }
 
 .domain, line {
@@ -51,4 +63,35 @@ rect {
 
 .start {
   display: block;
+  font-size: 1.3em;
+}
+
+.modal__container {
+  background-color: #E4E7F2;
+  max-width: 10em;
+  margin-left: 70em;
+  margin-top: 10em;
+  padding: 1em;
+  position: absolute;
+  border-radius: 5%;
+  opacity: 0.7;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.modal__text {
+  font-family: 'Open Sans';
+  color: #313131;
+  font-size: 0.8em;
+}
+
+.modal__close {
+  color: #E0473D;
+  font-family: sans-serif;
+}
+
+.startButtonRect {
+  fill: #E0473D;
 }

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Asteroid Watch</title>
+  <title>Asteroid</title>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Rubik+Mono+One" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="./style.css">
   <script src="https://d3js.org/d3.v4.min.js"></script>
@@ -10,29 +10,29 @@
 </head>
 <body>
 
-  <h1>Title Here</h1>
-  <!-- <button class="button" id="missDis">6. Sort by miss distance</button> -->
+  <h1>Asteroids</h1>
+
   <button class="button" onclick="speedSize()">5. Size and Speed</button>
-    <button class="start button" onclick="start()">1. Start</button>
+    <button class="start button" onclick="start()">START</button>
     <button class="button" onclick="size()">2. Size order</button>
     <button class="button" onclick="dangerous()">3. Dangerous</button>
-    <!-- <button class="button" onclick="orbit()">4. Orbitting body</button> -->
-  <div id="modal"></div>
-  <div class="chart"></div>
+
+  <div class="flex-container">
+    <div class="chart"></div>
+    <div id="modal"></div>
+  </div>
 
 
 
 
 
   <script src="./scripts/transitions.js"></script>
-  <!-- <script src="./scripts/missDis.js"></script> -->
   <script src="./scripts/margin.js"></script>
   <script src="./scripts/start.js"></script>
   <script src="./scripts/speedSize.js"></script>
   <script src="./scripts/isDangerous.js"></script>
   <script src="./scripts/sizeOrder.js"></script>
   <script src="./scripts/modals.js"></script>
-  <!-- <script src="./scripts/data/planets.js"></script> -->
   <script src="./scripts/variables.js"></script>
 
 

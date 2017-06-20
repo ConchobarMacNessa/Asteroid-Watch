@@ -2,10 +2,8 @@ function start(){
 d3.json(jsonUrl, function (err, data) {
 
   tick = true;
-
-  // data = data.sort(function(a,b) {
-  //   return b.estimated_diameter.kilometers.estimated_diameter_max - a.estimated_diameter.kilometers.estimated_diameter_max;
-  // })
+  document.getElementsByClassName('start')[0].style.transition = 'opacity 0.5s'
+  document.getElementsByClassName('start')[0].style.opacity = 0
 
 var rScale = d3.scaleSqrt()
   .domain([0, d3.max(data, d => d.estimated_diameter.kilometers.estimated_diameter_max)])
@@ -15,7 +13,7 @@ var simulation = d3.forceSimulation()
   .force('collide', d3.forceCollide(d => rScale(d.estimated_diameter.kilometers.estimated_diameter_max) + 1))
 
 var boxForce = boundedBox()
-    .bounds([[0, 0], [width - 20, height - 20]])
+    .bounds([[0, 0], [width - 40, height + 20]])
     .size(function (d) { return [100, 100] })
 
 var circles = svg
@@ -54,13 +52,14 @@ var circles = svg
         d3.selectAll(elements)
           .call(fade, 0.5);
       })
-
-  // circles
-  //   .append('text')
-  //     .attr('class', 'textNode')
-  //     .style('text-anchor', 'middle')
-  //     .attr('y', 4)
-  //     .text(d => d.name);
+      .on('click', function(d, i, elements){
+        d3.selectAll(elements)
+            .filter(':not(:hover)')
+              .style('fill', '#E0473D')
+        d3.selectAll(elements)
+            .filter(':hover')
+            .style('fill', '#EAB22B')
+      })
 
   simulation.nodes(data)
     .on('tick', ticked)
@@ -121,6 +120,60 @@ var circles = svg
   function constant(_) {
       return function () { return _ }
   }
+
+// function appendFirstPageText(){
+  var popupText = ['These 10 circles',
+'represent 10 asteroids.',
+'Click an asteroid at',
+'any time to find out',
+'more about it'];
+
+  var holder = svg
+    .append('g')
+      .attr('transform', 'translate(0, 100)')
+
+  holder
+    .append('rect')
+      .attr('class', 'popupBox')
+      .attr('display', 'block')
+      .attr('fill-opacity', 0)
+      .transition(d3.transition()
+        .duration(2000))
+      .attr('fill-opacity', 1)
+      .attr('fill', 'white')
+      .attr('width', 180)
+      .attr('height', 140)
+
+  var textholder = holder
+    .append('text')
+
+var y = 20;
+popupText.forEach(function(text){
+  textholder
+    .append('tspan')
+      .attr('x', 10)
+      .attr('y', y)
+      .attr('class', 'popupBox__text')
+      .text(text)
+
+      y += 20;
+})
+var buttonHolder =
+  holder
+  .append('g')
+  .attr('transform', 'translate(60, 105)')
+
+  buttonHolder
+  .append('rect')
+    .attr('class', 'startButtonRect')
+    .on('click', function(){
+      size(data);
+    })
+    .attr('width', 60)
+    .attr('height', 30)
+  .append('text')
+    .text('next')
+    .attr('class', 'buttonText');
 
 });
 }
