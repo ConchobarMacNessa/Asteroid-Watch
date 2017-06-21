@@ -1,11 +1,12 @@
 function start(){
 d3.json(jsonUrl, function (err, data) {
 
+  tick = true;
+
   setTimeout(function(){
     appendPopUpText(data, pageOneText, 'translate(0, 100)', 180, size)
   }, 1000);
 
-  tick = true;
   document.getElementsByClassName('start')[0].style.transition = 'opacity 0.5s'
   document.getElementsByClassName('start')[0].style.opacity = 0
 

@@ -51,7 +51,7 @@ function createEl(element, className, id, text, func) {
   return el;
 }
 
-function finalPopUp(){
+function finalPopUp(data){
 
   var popupText = 'This graph shows the asteroids arranged by both size and speed';
 
@@ -59,7 +59,7 @@ function finalPopUp(){
 
   var popup = createEl('div', 'finalPopUp__container', 'finalPopUp');
   var popupText = createEl('p', 'finalPopUp__text', null, popupText);
-  var close = createEl('span', 'finalPopUp__close', `closepopup`, 'END', function(){console.log('popupclosed');});
+  var close = createEl('span', 'finalPopUp__close', `closepopup`, 'END', ending);
 
   app.appendChild(popup);
   popup.appendChild(popupText);

@@ -3,9 +3,7 @@ function dangerous(data){
   removePopUp();
 
   setTimeout(function(){
-    appendPopUpText(data, pageThreeText, 'translate(450, 160)', 165, function(){
-      return speedSize(data);
-    })
+    appendPopUpText(data, pageThreeText, 'translate(450, 160)', 165, speedSize)
   }, 2000);
 
   var nonDangerousAs = svg

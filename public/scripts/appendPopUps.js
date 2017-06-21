@@ -1,4 +1,4 @@
-function appendPopUpText(data, popuptext, position, boxHeight, func, font){
+function appendPopUpText(data, popuptext, position, boxHeight, func, simulation){
 
   var holder = svg
     .append('g')
@@ -44,7 +44,7 @@ var buttonHolder =
     .attr('fill', '#E0473D')
     .attr('class', 'startButtonRect')
     .on('click', function(){
-      func(data);
+      func(data, simulation);
     })
     .attr('display', 'block')
     .attr('fill-opacity', 0)
@@ -52,19 +52,11 @@ var buttonHolder =
       .duration(2000))
     .attr('fill-opacity', 1)
 
-if (font) {
-  svg
-    .selectAll('.popupTextHolder')
-      // .attr('transform', 'translate(150, 0)')
+ };
 
-  svg
-    .selectAll('.popupBox__text')
-      .attr('font-size', '1.5em')
-}
 
- }
 
- function changePopUp(data, text) {
+ function changePopUp(data, text, simulation) {
    svg
     .selectAll('.popupBox__text')
     .remove();
@@ -91,9 +83,11 @@ if (font) {
    svg
     .selectAll('.startButtonRect')
       .on('click', function(){
-        dangerous(data);
+        dangerous(data, simulation);
       });
  };
+
+
 
  function removePopUp(){
    var previousTextBox = svg

@@ -19,7 +19,7 @@ h1, .finalPopUp__close {
 }
 
 rect {
-  fill: #E4E7F2;
+  /*fill: #E4E7F2;*/
   rx: 5;
   ry: 5;
 }
@@ -122,4 +122,9 @@ rect {
 .flex-container-column {
   display: flex;
   flex-direction: column;
+}
+
+.finalText {
+  font-family: 'Rubik Mono One';
+  font-size: 0.9em;
 }

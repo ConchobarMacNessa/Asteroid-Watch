@@ -3,10 +3,7 @@ function speedSize(data){
   removePopUp();
 
   setTimeout(function(){
-    // appendPopUpText(data, pageFourText, 'translate(100, 0)', 130, function(){
-    //   return start(data);
-    // }, 'font')
-    finalPopUp();
+    finalPopUp(data);
   }, 2000);
 
   tick = false;
