@@ -45,7 +45,6 @@ var circles = svg
 
 
 function addCs(groups){
-  console.log(typeof groups);
   for (var i = 0; i < 10; i++){
   groups[i][0]
     .style.transition = "cy 2.5s";

@@ -4,7 +4,7 @@ var height = 565 - margin.top - margin.bottom;
 
 var svg = d3.select(".chart")
   .append("svg")
-  .attr("width", width + margin.left + margin.right)
+  .attr("width", width + 20 + margin.left + margin.right)
   .classed("info", true)
   .attr("height", height + 200 + margin.top + margin.bottom)
   .append("g")

@@ -4,7 +4,7 @@ d3.json(jsonUrl, function (err, data) {
   tick = true;
 
   setTimeout(function(){
-    appendPopUpText(data, pageOneText, 'translate(0, 100)', 180, size)
+    appendPopUpText(data, pageOneText, 'translate(0, 150)', 180, size)
   }, 1000);
 
 fadeOutElements(['start', 'title'])
@@ -17,7 +17,7 @@ var simulation = d3.forceSimulation()
   .force('collide', d3.forceCollide(d => rScale(d.estimated_diameter.kilometers.estimated_diameter_max) + 1))
 
 var boxForce = boundedBox()
-    .bounds([[0, 0], [width - 40, height + 20]])
+    .bounds([[0, 0], [width - 50, height + 20]])
     .size(function (d) { return [100, 100] })
 
 var circles = svg

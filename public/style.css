@@ -19,7 +19,6 @@ h1, .finalPopUp__close {
 }
 
 rect {
-  /*fill: #E4E7F2;*/
   rx: 5;
   ry: 5;
 }
@@ -90,7 +89,7 @@ rect {
   padding: 1em;
   position: absolute;
   border-radius: 5%;
-  opacity: 1;
+  opacity: 0.7;
 }
 
 .flex-container {

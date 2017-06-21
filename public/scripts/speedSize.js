@@ -26,6 +26,7 @@ setTimeout(function appendAxis(){
 
   var xAxis = d3.axisBottom(xScale)
     .ticks(5);
+
   svg
     .append('g')
       .attr('transform', `translate(0, ${height})`)
@@ -45,7 +46,7 @@ setTimeout(function appendAxis(){
     .append("text")
       .attr("transform", `translate(${width/2}, ${height + margin.top + 40})`)
       .style("text-anchor", "middle")
-      .text("Size in KM");
+      .text("Size in km");
 
   }, 2000);
 
@@ -57,14 +58,15 @@ setTimeout(function appendAxis(){
     tempObj.speed = d.close_approach_data.relative_velocity.kilometers_per_second;
     tempObj.size = d.estimated_diameter.kilometers.estimated_diameter_max
     asteroidObj.push(tempObj)
-  })
+  });
 
   var asteroids = svg.selectAll('.gAsteroid')
   .selectAll('circle')
-  .transition(d3.transition()
-    .duration(250))
-  .attr('cy', 0)
-  .attr('cx', 50);
+    .transition(d3.transition()
+      .duration(1000))
+    .attr('cx', 0)
+    .attr('cy', 0);
+
 
   for (var i = 0; i < gElementsGroups.length; i++) {
     for (var i = 0; i < asteroidObj.length; i++){
