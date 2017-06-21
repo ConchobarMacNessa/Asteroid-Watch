@@ -13,7 +13,7 @@ function appendPopUpText(data, popuptext, position, boxHeight, func, simulation)
       .attr('fill-opacity', 0)
       .transition(d3.transition()
         .duration(2000))
-      .attr('fill-opacity', 1)
+      .attr('fill-opacity', 0.7)
       .attr('width', 180)
       .attr('height', boxHeight);
 
@@ -64,22 +64,24 @@ var buttonHolder =
    var currentPopUp = svg
    .selectAll('.popupBoxHolder')
      .transition(d3.transition()
-       .duration(3000))
+       .duration(2500))
      .attr('transform', 'translate(650, 0)');
 
      var textholder = svg
       .selectAll('.popupTextHolder');
+setTimeout(function(){
+  var y = 20;
+  text.forEach(function(t){
+    textholder
+      .append('tspan')
+        .attr('x', 10)
+        .attr('y', y)
+        .attr('class', 'popupBox__text')
+        .text(t)
+        y += 20;
+  });
+}, 2500)
 
-   var y = 20;
-   text.forEach(function(t){
-     textholder
-       .append('tspan')
-         .attr('x', 10)
-         .attr('y', y)
-         .attr('class', 'popupBox__text')
-         .text(t)
-         y += 20;
-   });
    svg
     .selectAll('.startButtonRect')
       .on('click', function(){

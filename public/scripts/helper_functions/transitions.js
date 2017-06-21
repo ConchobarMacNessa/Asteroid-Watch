@@ -11,7 +11,6 @@ function ticked() {
   if (tick){
     asteroidCircle
       .attr('cx', function(d){
-        // console.log('ticl')
         return d.x
       })
       .attr('cy', function(d){
@@ -23,3 +22,18 @@ function ticked() {
 
 var t = d3.transition()
   .duration(2000);
+
+function fadeOutElements(arr){
+  arr.forEach(function(a){
+    document.getElementsByClassName(a)[0].style.transition = 'opacity 0.5s';
+    document.getElementsByClassName(a)[0].style.opacity = 0;
+  })
+};
+
+function removeSvgContent(arr){
+  arr.forEach(function(e){
+    svg
+      .selectAll(e)
+        .remove();
+  })
+}

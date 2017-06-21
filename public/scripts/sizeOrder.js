@@ -41,17 +41,14 @@ var circles = svg
         addCs(circles._groups)
       }, 1000)
     }
-}
+};
 
 
 function addCs(groups){
+  console.log(typeof groups);
   for (var i = 0; i < 10; i++){
   groups[i][0]
     .style.transition = "cy 2.5s";
   groups[i][0].setAttribute('cy', 250);
   }
-}
-
-function sayHello(data){
-  console.log(data);
-}
+};

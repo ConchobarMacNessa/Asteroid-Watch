@@ -8,15 +8,7 @@ var toBeRemoved = [
   'text'
 ];
 
-  function removeContent(){
-    toBeRemoved.forEach(function(e){
-      console.log(e);
-      svg
-        .selectAll(e)
-          .remove();
-    })
-  }
-  removeContent();
+  removeSvgContent(toBeRemoved);
 
   document.getElementById('finalPopUp').style.display = 'none';
 

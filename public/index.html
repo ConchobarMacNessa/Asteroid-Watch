@@ -1,41 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Asteroid</title>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Rubik+Mono+One" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="./style.css">
-  <script src="https://d3js.org/d3.v4.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Asteroid</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Rubik+Mono+One" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <script src="https://d3js.org/d3.v4.min.js"></script>
 
 </head>
+
 <body>
 
-  <h1>Asteroids</h1>
+    <h1 class="title">Asteroids</h1>
 
     <button class="start button" onclick="start()">START</button>
 
-  <div class="flex-container">
-    <div class="chart"></div>
-  <div class="flex-container-column">
-    <div id="popup"></div>
-    <div id="modal"></div>
-  </div>
-  </div>
+    <div class="flex-container">
+        <div class="chart"></div>
+        <div class="flex-container-column">
+            <div id="popup"></div>
+            <div id="modal"></div>
+        </div>
+    </div>
 
+    <script src="./scripts/helper_functions/transitions.js"></script>
+    <script src="./scripts/margin.js"></script>
+    <script src="./scripts/start.js"></script>
+    <script src="./scripts/speedSize.js"></script>
+    <script src="./scripts/isDangerous.js"></script>
+    <script src="./scripts/sizeOrder.js"></script>
+    <script src="./scripts/modals.js"></script>
+    <script src="./scripts/appendPopUps.js"></script>
+    <script src="./scripts/data/popupTexts.js"></script>
+    <script src="./scripts/ending.js"></script>
+    <script src="./scripts/helper_functions/boxForce.js"></script>
 
-
-
-
-  <script src="./scripts/transitions.js"></script>
-  <script src="./scripts/margin.js"></script>
-  <script src="./scripts/start.js"></script>
-  <script src="./scripts/speedSize.js"></script>
-  <script src="./scripts/isDangerous.js"></script>
-  <script src="./scripts/sizeOrder.js"></script>
-  <script src="./scripts/modals.js"></script>
-  <script src="./scripts/appendPopUps.js"></script>
-  <script src="./scripts/data/popupTexts.js"></script>
-  <script src="./scripts/ending.js"></script>
 
 </body>
+
 </html>

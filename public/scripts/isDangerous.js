@@ -14,6 +14,7 @@ function dangerous(data){
     nonDangerousAs._groups[i][0].style.transition = 'cx 1s';
     nonDangerousAs._groups[i][0].setAttribute('cx', 100);
   }
+  
   var dangerousAsteroid = svg
     .selectAll('.hazardous')
     .selectAll('circle');
