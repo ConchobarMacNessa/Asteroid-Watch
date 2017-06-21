@@ -7,10 +7,15 @@ body {
   background: #313131;
 }
 
-h1 {
+h1, .finalPopUp__close {
   text-align: center;
   color: #E0473D;
   font-family: 'Rubik Mono One';
+}
+
+.finalPopUp__close {
+  font-size: 0.9em;
+  margin-left: 4em;
 }
 
 rect {
@@ -19,7 +24,7 @@ rect {
   ry: 5;
 }
 
-.popupBox__text {
+.popupBox__text, .finalPopUp__text {
   fill: #313131;
   font-family: 'Open Sans';
   font-size: 0.9em;
@@ -77,6 +82,17 @@ rect {
   opacity: 0.7;
 }
 
+.finalPopUp__container {
+  background-color: #E4E7F2;
+  max-width: 10em;
+  margin-left: 70em;
+  margin-top: 0em;
+  padding: 1em;
+  position: absolute;
+  border-radius: 5%;
+  opacity: 1;
+}
+
 .flex-container {
   display: flex;
 }
@@ -101,4 +117,9 @@ rect {
 .nextButton:hover {
   cursor: pointer;
   cursor: hand;
+}
+
+.flex-container-column {
+  display: flex;
+  flex-direction: column;
 }

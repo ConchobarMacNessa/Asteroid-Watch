@@ -1,24 +1,9 @@
 function size(data){
   removePopUp();
 
-  var firstText = [
-    'If we arrange them by',
-    'size, we see that',
-    '385580 (2004 XO14) is',
-    'the largest, at an',
-    'estimated maximum',
-    'diameter of 3.58km...',
-    ''
-  ];
-var secondText = [
-  'and that (2001 XP31)',
-  'is the smallest, at',
-  'just 0.26km.',
-  ''
-];
 setTimeout(function(){
-  appendPopUpText(data, firstText, 'translate(0, 0)', 165, function(){
-    return changePopUp(data, secondText);
+  appendPopUpText(data, pageTwoFirstText, 'translate(0, 0)', 165, function(){
+    return changePopUp(data, pageTwoSecondText);
   })
 }, 2500);
 

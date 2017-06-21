@@ -12,13 +12,14 @@
 
   <h1>Asteroids</h1>
 
-  <button class="button" onclick="speedSize()">5. Size and Speed</button>
     <button class="start button" onclick="start()">START</button>
-    <button class="button" onclick="dangerous()">3. Dangerous</button>
 
   <div class="flex-container">
     <div class="chart"></div>
+  <div class="flex-container-column">
+    <div id="popup"></div>
     <div id="modal"></div>
+  </div>
   </div>
 
 
@@ -32,8 +33,8 @@
   <script src="./scripts/isDangerous.js"></script>
   <script src="./scripts/sizeOrder.js"></script>
   <script src="./scripts/modals.js"></script>
-  <script src="./scripts/variables.js"></script>
   <script src="./scripts/appendPopUps.js"></script>
+  <script src="./scripts/data/popupTexts.js"></script>
 
 
 </body>

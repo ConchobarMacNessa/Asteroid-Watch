@@ -50,3 +50,18 @@ function createEl(element, className, id, text, func) {
   if (func) {el.onclick = func };
   return el;
 }
+
+function finalPopUp(){
+
+  var popupText = 'This graph shows the asteroids arranged by both size and speed';
+
+  var app = document.getElementById('popup');
+
+  var popup = createEl('div', 'finalPopUp__container', 'finalPopUp');
+  var popupText = createEl('p', 'finalPopUp__text', null, popupText);
+  var close = createEl('span', 'finalPopUp__close', `closepopup`, 'END', function(){console.log('popupclosed');});
+
+  app.appendChild(popup);
+  popup.appendChild(popupText);
+  popup.appendChild(close);
+}

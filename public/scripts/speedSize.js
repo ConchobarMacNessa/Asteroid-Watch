@@ -1,5 +1,13 @@
-function speedSize(){
-d3.json(jsonUrl, function (err, data) {
+function speedSize(data){
+
+  removePopUp();
+
+  setTimeout(function(){
+    // appendPopUpText(data, pageFourText, 'translate(100, 0)', 130, function(){
+    //   return start(data);
+    // }, 'font')
+    finalPopUp();
+  }, 2000);
 
   tick = false;
 
@@ -67,6 +75,4 @@ setTimeout(function appendAxis(){
         gElementsGroups[i].setAttribute('transform',`translate(${xScale(asteroidObj[i].size)}, ${yScale(asteroidObj[i].speed)})`);
       }
   }
-
-});
 }

@@ -1,4 +1,4 @@
-function appendPopUpText(data, popuptext, position, boxHeight, func){
+function appendPopUpText(data, popuptext, position, boxHeight, func, font){
 
   var holder = svg
     .append('g')
@@ -19,6 +19,7 @@ function appendPopUpText(data, popuptext, position, boxHeight, func){
 
   var textholder = holder
     .append('text')
+      .attr('class', 'popupTextHolder')
 
 var y = 20;
 popuptext.forEach(function(text){
@@ -51,28 +52,51 @@ var buttonHolder =
       .duration(2000))
     .attr('fill-opacity', 1)
 
+if (font) {
+  svg
+    .selectAll('.popupTextHolder')
+      // .attr('transform', 'translate(150, 0)')
+
+  svg
+    .selectAll('.popupBox__text')
+      .attr('font-size', '1.5em')
+}
+
  }
 
  function changePopUp(data, text) {
-   console.log(data);
+   svg
+    .selectAll('.popupBox__text')
+    .remove();
+
    var currentPopUp = svg
    .selectAll('.popupBoxHolder')
-     .transition(t)
+     .transition(d3.transition()
+       .duration(3000))
      .attr('transform', 'translate(650, 0)');
 
-    setTimeout(function(){
-      appendPopUpText(data, text, 'translate(650, 0)', 165, function(){
-        return dangerous(data);
-      })
-    }, 1500)
-    setTimeout(function(){
+     var textholder = svg
+      .selectAll('.popupTextHolder');
 
-      removePopUp();
-    }, 1000)
- }
+   var y = 20;
+   text.forEach(function(t){
+     textholder
+       .append('tspan')
+         .attr('x', 10)
+         .attr('y', y)
+         .attr('class', 'popupBox__text')
+         .text(t)
+         y += 20;
+   });
+   svg
+    .selectAll('.startButtonRect')
+      .on('click', function(){
+        dangerous(data);
+      });
+ };
 
  function removePopUp(){
    var previousTextBox = svg
      .selectAll('.popupBoxHolder')
      .remove();
- }
+ };
